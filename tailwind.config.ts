@@ -30,9 +30,6 @@ const config: Config = {
                     DEFAULT: "#FFFFFF",
                 },
             },
-            fontFamily: {
-                "work-sans": ["var(--font-work-sans)"],
-            },
             borderRadius: {
                 lg: "var(--radius)",
                 md: "calc(var(--radius) - 2px)",

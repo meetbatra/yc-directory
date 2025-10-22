@@ -12,6 +12,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-work-sans: var(--font-work-sans);
   
   /* Custom colors */
   --color-primary-100: #FFE8F0;
@@ -30,17 +31,10 @@
   --shadow-300: 2px 2px 0px 2px rgb(238, 43, 105);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-work-sans);
 }
 
 @layer utilities {
@@ -96,8 +90,7 @@ body {
   }
 
   .tag {
-    @apply bg-secondary px-6 py-3 font-bold rounded-sm uppercase relative;
-    font-family: var(--font-work-sans);
+    @apply bg-secondary font-work-sans px-6 py-3 font-bold rounded-sm uppercase relative;
   }
   
   .tag::before {
@@ -119,8 +112,7 @@ body {
   }
 
   .heading {
-    @apply uppercase bg-black px-6 py-3 font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
-    font-family: var(--font-work-sans);
+    @apply uppercase bg-black px-6 py-3 font-work-sans font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
   }
 
   .sub-heading {
@@ -210,8 +202,7 @@ body {
   }
 
   .login {
-    @apply border-[5px] py-4 border-black bg-white text-black relative shadow-100 font-medium hover:shadow-none transition-all duration-500;
-    font-family: var(--font-work-sans);
+    @apply border-[5px] py-4 font-work-sans border-black bg-white text-black relative shadow-100 font-medium hover:shadow-none transition-all duration-500;
   }
 
   /* searchform */

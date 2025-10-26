@@ -3,6 +3,7 @@ import SearchForm from "../../components/SearchForm";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import {sanityFetch, SanityLive} from "@/sanity/lib/live";
 import { Suspense } from "react";
+import {auth} from "@/auth";
 
 async function StartupsList({ query }: { query?: string }) {
   const params = { search: query || null};
@@ -24,7 +25,12 @@ async function StartupsList({ query }: { query?: string }) {
 async function HomeContent({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
   const query = (await searchParams).query;
 
-  return (
+  const session = await auth();
+
+    console.log(session?.id);
+
+
+    return (
     <>
       <section className="pink_container">
         <h1 className="heading">

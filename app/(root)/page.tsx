@@ -25,11 +25,6 @@ async function StartupsList({ query }: { query?: string }) {
 async function HomeContent({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
   const query = (await searchParams).query;
 
-  const session = await auth();
-
-    console.log(session?.id);
-
-
     return (
     <>
       <section className="pink_container">
@@ -62,10 +57,8 @@ async function HomeContent({ searchParams }: { searchParams: Promise<{ query?: s
 export default function Home({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
         <HomeContent searchParams={searchParams} />
-      </Suspense>
-      <SanityLive />
+        <SanityLive />
     </>
   );
 }

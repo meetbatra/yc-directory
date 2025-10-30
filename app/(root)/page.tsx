@@ -57,7 +57,9 @@ async function HomeContent({ searchParams }: { searchParams: Promise<{ query?: s
 export default function Home({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
   return (
     <>
-        <HomeContent searchParams={searchParams} />
+        <Suspense>
+            <HomeContent searchParams={searchParams} />
+        </Suspense>
         <SanityLive />
     </>
   );

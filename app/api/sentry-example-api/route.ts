@@ -8,13 +8,6 @@ class SentryExampleAPIError extends Error {
 }
 // A faulty API route to test Sentry's error monitoring
 export function GET() {
-  try {
-    throw new SentryExampleAPIError("This error is raised on the backend called by the example page.");
-  } catch (error) {
-    // Only throw during runtime, not during build
-    if (process.env.NODE_ENV !== 'production' || typeof window !== 'undefined') {
-      throw error;
-    }
-  }
+  throw new SentryExampleAPIError("This error is raised on the backend called by the example page.");
   return NextResponse.json({ data: "Testing Sentry Error..." });
 }

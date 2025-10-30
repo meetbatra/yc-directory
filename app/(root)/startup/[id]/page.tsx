@@ -12,9 +12,7 @@ import StartupCard, {StartupCardType} from "@/components/StartupCard";
 
 const md = markdownit();
 
-const Page = async ({ params } : { params: Promise<{ id: string }>}) => {
-    const id = (await params).id;
-
+async function StartupContent({ id }: { id: string }) {
     const [post, { select: editorPosts}] = await Promise.all([
         client.fetch(STARTUP_BY_ID_QUERY, { id }),
         client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: "editor-picks"})
@@ -91,6 +89,16 @@ const Page = async ({ params } : { params: Promise<{ id: string }>}) => {
                 </Suspense>
             </section>
         </>
+    )
+}
+
+const Page = async ({ params } : { params: Promise<{ id: string }>}) => {
+    const id = (await params).id;
+
+    return (
+        <Suspense fallback={<Skeleton className="w-full h-screen" />}>
+            <StartupContent id={id} />
+        </Suspense>
     )
 }
 export default Page

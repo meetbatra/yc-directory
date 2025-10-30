@@ -1,4 +1,4 @@
-import StartupCard, {StartupCardType} from "@/components/StartupCard";
+import StartupCard, {StartupCardSkeleton, StartupCardType} from "@/components/StartupCard";
 import SearchForm from "../../components/SearchForm";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import {sanityFetch, SanityLive} from "@/sanity/lib/live";
@@ -16,7 +16,7 @@ async function StartupsList({ query }: { query?: string }) {
           <StartupCard key={post?._id} post={post} />
         ))
       ) : (
-        <></>
+        <p className="no-result">No startups found</p>
       )}
     </ul>
   );
@@ -46,7 +46,7 @@ async function HomeContent({ searchParams }: { searchParams: Promise<{ query?: s
           {query ? `Search results for "${query}"` : 'All Startups'}
         </p>
 
-        <Suspense fallback={<div>Loading startups...</div>}>
+        <Suspense fallback={<ul className="mt-7 card_grid"><StartupCardSkeleton /></ul>}>
           <StartupsList query={query} />
         </Suspense>
       </section>

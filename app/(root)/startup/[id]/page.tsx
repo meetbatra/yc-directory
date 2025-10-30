@@ -92,13 +92,16 @@ async function StartupContent({ id }: { id: string }) {
     )
 }
 
-const Page = async ({ params } : { params: Promise<{ id: string }>}) => {
-    const id = (await params).id;
-
+const Page = ({ params } : { params: Promise<{ id: string }>}) => {
     return (
         <Suspense fallback={<Skeleton className="w-full h-screen" />}>
-            <StartupContent id={id} />
+            <StartupContentWrapper params={params} />
         </Suspense>
     )
+}
+
+async function StartupContentWrapper({ params }: { params: Promise<{ id: string }> }) {
+    const id = (await params).id;
+    return <StartupContent id={id} />
 }
 export default Page

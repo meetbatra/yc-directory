@@ -1,8 +1,10 @@
 import {auth} from "@/auth";
 import {redirect} from "next/navigation";
 import StartupForm from "@/components/StartupForm";
+import {Suspense} from "react";
+import {Skeleton} from "@/components/ui/skeleton";
 
-const Page = async () => {
+async function CreateStartupContent() {
     const session = await auth();
 
     if(!session) redirect("/");
@@ -15,6 +17,14 @@ const Page = async () => {
 
             <StartupForm />
         </>
+    )
+}
+
+const Page = () => {
+    return (
+        <Suspense fallback={<Skeleton className="w-full h-screen" />}>
+            <CreateStartupContent />
+        </Suspense>
     )
 }
 export default Page

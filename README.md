@@ -257,10 +257,6 @@ This is due to next-auth beta version compatibility. The application works corre
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
-
-This project is private and proprietary.
-
 ## 🙏 Acknowledgments
 
 - Built with [Next.js](https://nextjs.org/)
